@@ -12,9 +12,9 @@ mainmenu() {
     echo "\033[0;37m Arch linux setup script"
     echo "\033[0;37m----------------------------------------------------------------------------------------------------"
 }
-read -n 1 -p "continue? [y/n]" c
-if [!["$c" == *[yY]* || "$c" == *[yY]es*]];
-then
+read -n 1 -r -p "continue? [y/n]" choice
+choice=${choice,,} #to lovercase
+if ![[ $choice =~ (yes|y) ]]; then
     exit 0
 fi
 
@@ -40,3 +40,9 @@ swapon "${DISK}1"
 
 mkfs.ext4 "${DISK}2"
 mount "${DISK}2" /mnt
+
+arch-chroot /mnt << "EOT"
+
+
+
+EOT
