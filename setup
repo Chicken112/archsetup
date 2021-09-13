@@ -9,12 +9,14 @@ SWAPSIZE="2G"
 USERNAME="arch"     # the password is "arch"
 #**********************************************************************************
 
-mainmenu() {
-    clear
-    echo "\033[0;37m----------------------------------------------------------------------------------------------------"
-    echo "\033[0;37m Arch linux setup script"
-    echo "\033[0;37m----------------------------------------------------------------------------------------------------"
-}
+clear
+set -e
+
+
+
+echo "\033[0;37m----------------------------------------------------------------------------------------------------"
+echo "\033[0;37m Arch linux setup script"
+echo "\033[0;37m----------------------------------------------------------------------------------------------------"
 read -n 1 -r -p "continue? [y/n]" choice
 choice=${choice,,} #to lovercase
 if ![[ $choice =~ \(yes|y| \) ]]; then
@@ -37,15 +39,16 @@ timedatectl set-ntp true
     echo t; echo 1; echo 19; # (TODO) this needs to be swap, may change
     
     echo w
-) | fdisk /dev/sda
+) | fdisk $DISK
 mkswap "${DISK}1"
 swapon "${DISK}1"
 
 mkfs.ext4 "${DISK}2"
 mount "${DISK}2" /mnt
+genfstab -U /mnt >> /mnt/etc/fstab
+
+pacstrap /mnt base linux linux-firmware
 
 arch-chroot /mnt << "EOT"
-
-
 
 EOT
