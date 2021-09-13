@@ -16,9 +16,9 @@ clear
 echo "----------------------------------------------------------------------------------------------------"
 echo " Arch linux setup script"
 echo "----------------------------------------------------------------------------------------------------"
-read -n 1 -r -p "continue? [y/n]" choice
+read -n1 -r -p "continue? [y/n]" choice
 choice=${choice,,} #to lovercase
-if [[ $choice == "y" ]] || [[ $choice == "yes" ]] || [[ $choice == "" ]];
+if [ $choice != "y" ] || [ $choice != "yes" ] || [ $choice != "" ];
 then
     echo "Continuing..."
 else
