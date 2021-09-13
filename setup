@@ -10,7 +10,6 @@ USERNAME="arch"     # the password is "arch"
 #**********************************************************************************
 
 clear
-set -e
 
 
 
@@ -48,9 +47,10 @@ swapon "${DISK}1"
 
 mkfs.ext4 "${DISK}2"
 mount "${DISK}2" /mnt
-genfstab -U /mnt >> /mnt/etc/fstab
 
 pacstrap /mnt base linux linux-firmware
+
+genfstab -U /mnt >> /mnt/etc/fstab
 
 arch-chroot /mnt << "EOT"
 
