@@ -16,9 +16,10 @@ set -e
 echo "----------------------------------------------------------------------------------------------------"
 echo " Arch linux setup script"
 echo "----------------------------------------------------------------------------------------------------"
-read -n1 -r -p "continue? [y/n]" choice
-choice=${choice,,} #to lovercase
-if [ $choice != "y" ] && [ $choice != "yes" ] && [ $choice != "" ];
+CHOISE="no"
+read -n1 -r -p "continue? [y/n]" CHOISE
+CHOISE=${CHOISE,,} #to lovercase
+if [ $CHOISE != "y" ] && [ $CHOISE != "yes" ] && [ $CHOISE != "" ];
 then
     echo "Continuing..."
 else
