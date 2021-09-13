@@ -1,1 +1,18 @@
 clear
+echo "--------------------------------------------------------------------------------"
+echo " Arch linux setup script"
+echo "--------------------------------------------------------------------------------"
+read -n 1 -p "continue? [y/n]"
+
+#localization, change for your language
+loadkeys hu
+/etc/locale.conf >> LANG=en_US.UTF-8
+/etc/vconsole.conf >> KEYMAP=hu
+
+timedatectl set-ntp true
+
+# partitioning
+# (sda)
+(
+    echo n; echo p; echo 1; echo ""; echo +2G; echo w
+) | fdisk /dev/sda
