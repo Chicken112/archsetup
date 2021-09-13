@@ -32,3 +32,8 @@ timedatectl set-ntp true
     
     echo w
 ) | fdisk /dev/sda
+mkswap "${DISK}1"
+swapon "${DISK}1"
+
+mkfs.ext4 "${DISK}2"
+mount "${DISK}2" /mnt
