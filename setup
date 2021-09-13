@@ -5,6 +5,8 @@
 DISK=/dev/sda
 KEYMAP="hu"
 SWAPSIZE="2G"
+
+USERNAME="arch"     # the password is "arch"
 #**********************************************************************************
 
 mainmenu() {
@@ -15,7 +17,7 @@ mainmenu() {
 }
 read -n 1 -r -p "continue? [y/n]" choice
 choice=${choice,,} #to lovercase
-if ![[ $choice =~ ^(yes|y) ]]; then
+if ![[ $choice =~ \(yes|y| ) ]]; then
     exit 0
 fi
 
