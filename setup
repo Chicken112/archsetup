@@ -1,13 +1,24 @@
-clear
-echo "--------------------------------------------------------------------------------"
-echo " Arch linux setup script"
-echo "--------------------------------------------------------------------------------"
-read -n 1 -p "continue? [y/n]"
+#!/bin/bash
+
+#**********************************************************************************
+# User configurable part
+DISK=/dev/sda
+KEYMAP="hu"
+#**********************************************************************************
+
+mainmenu() {
+    clear
+    echo "----------------------------------------------------------------------------------------------------"
+    echo " Arch linux setup script"
+    echo "----------------------------------------------------------------------------------------------------"
+}
+read -n 1 -p "continue? [y/n]" c
+if [!["$c" == *[yY]* || "$c" == *[yY]es*]]; then exit 0
 
 #localization, change for your language
-loadkeys hu
+loadkeys $KEYMAP
 /etc/locale.conf >> LANG=en_US.UTF-8
-/etc/vconsole.conf >> KEYMAP=hu
+/etc/vconsole.conf >> KEYMAP=$KEYMAP
 
 timedatectl set-ntp true
 
