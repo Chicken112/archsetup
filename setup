@@ -23,7 +23,7 @@ if [ $CHOISE != "y" ] && [ $CHOISE != "yes" ] && [ $CHOISE != "" ];
 then
     echo "Continuing..."
 else
-    exit 0
+    exit 1
 fi
 
 #localization, change for your language
