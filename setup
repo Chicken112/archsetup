@@ -4,6 +4,7 @@
 # User configurable part
 DISK=/dev/sda
 KEYMAP="hu"
+SWAPSIZE="2G"
 #**********************************************************************************
 
 mainmenu() {
@@ -14,7 +15,7 @@ mainmenu() {
 }
 read -n 1 -r -p "continue? [y/n]" choice
 choice=${choice,,} #to lovercase
-if ![[ $choice =~ (yes|y) ]]; then
+if ![[ $choice =~ ^(yes|y) ]]; then
     exit 0
 fi
 
@@ -28,7 +29,7 @@ timedatectl set-ntp true
 # partitioning
 # (sda)
 (
-    echo n; echo p; echo 1; echo ""; echo +2G; # creating swap
+    echo n; echo p; echo 1; echo ""; echo +$SWAPSIZE; # creating swap
     echo n; echo p; echo 2; echo ""; echo "";  # creating main filesystem
 
     echo t; echo 1; echo 19; # (TODO) this needs to be swap, may change
