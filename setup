@@ -21,8 +21,6 @@ read -n1 -r -p "continue? [y/n]" CHOISE
 CHOISE=${CHOISE,,} #to lovercase
 if [ $CHOISE != "y" ] && [ $CHOISE != "yes" ] && [ $CHOISE != "" ];
 then
-    echo "Continuing..."
-else
     exit 1
 fi
 
@@ -78,10 +76,11 @@ echo "Done setting up users"
 pacman -S --noconfirm sudo
 echo "%wheel ALL=(ALL:ALL) ALL" | sudo EDITOR="tee -a" visudo
 
-
-pacman -S --noconfirm grub
-grub-install --target=i386-pc $DISK
-grub-mkconfig -o /boot/grub/grub.cfg
-
 pacman -S --noconfirm networkmanager
 systemctl enable NetworkManager
+
+pacman -S --noconfirm grub
+grub-install --target=i386-pc --root-directory=/mnt $DISK
+grub-mkconfig -o /boot/grub/grub.cfg
+
+umount -R /mnt
