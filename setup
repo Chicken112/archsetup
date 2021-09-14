@@ -23,6 +23,7 @@ if [ $CHOISE != "y" ] && [ $CHOISE != "yes" ] && [ $CHOISE != "" ];
 then
     exit 1
 fi
+echo "\n"
 
 #localization, change for your language
 loadkeys $KEYMAP
@@ -59,7 +60,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 echo "Done setting up disk"
 
 
-
+cat << EOF | arch-chroot /mnt
 echo $USERNAME | sudo tee /etc/hostname
 echo "127.0.0.1      localhost
 ::1      localhost
@@ -80,7 +81,8 @@ pacman -S --noconfirm networkmanager
 systemctl enable NetworkManager
 
 pacman -S --noconfirm grub
-grub-install --target=i386-pc --root-directory=/mnt $DISK
+grub-install --target=i386-pc $DISK
 grub-mkconfig -o /boot/grub/grub.cfg
+EOF
 
 umount -R /mnt
