@@ -83,4 +83,8 @@ grub-install --target=i386-pc $DISK
 grub-mkconfig -o /boot/grub/grub.cfg
 EOF
 
+
+
+
+
 umount -R /mnt
