@@ -23,7 +23,18 @@ if [ $CHOISE != "y" ] && [ $CHOISE != "yes" ] && [ $CHOISE != "" ];
 then
     exit 1
 fi
-echo ""
+echo "\n"
+
+#localization, change for your language
+loadkeys $KEYMAP
+ln -sf /usr/share/zoneinfo/Europe/Budapest /etc/localtime
+echo LANG=en_US.UTF-8 | sudo tee /etc/locale.conf
+echo KEYMAP=$KEYMAP | sudo tee /etc/vconsole.conf
+echo "en_US.UTF-8 UTF-8" | sudo tee -a /etc/locale.gen
+timedatectl set-ntp true
+hwclock --systohc   # sync software time to hardware clock
+locale-gen
+echo "Done setting up locals"
 
 # partitioning
 (
@@ -73,14 +84,3 @@ grub-mkconfig -o /boot/grub/grub.cfg
 EOF
 
 umount -R /mnt
-
-#localization, change for your language
-loadkeys $KEYMAP
-ln -sf /usr/share/zoneinfo/Europe/Budapest /etc/localtime
-echo LANG=en_US.UTF-8 | sudo tee /etc/locale.conf
-echo KEYMAP=$KEYMAP | sudo tee /etc/vconsole.conf
-echo "en_US.UTF-8 UTF-8" | sudo tee -a /etc/locale.gen
-timedatectl set-ntp true
-hwclock --systohc   # sync software time to hardware clock
-locale-gen
-echo "Done setting up locals"
