@@ -28,8 +28,8 @@ fi
 
 #localization, change for your language
 loadkeys $KEYMAP
-/etc/locale.conf >> LANG=en_US.UTF-8
-/etc/vconsole.conf >> KEYMAP=$KEYMAP
+LANG=en_US.UTF-8 >> /etc/locale.conf
+KEYMAP=$KEYMAP >> /etc/vconsole.conf
 
 timedatectl set-ntp true
 echo "Done setting up locals"
