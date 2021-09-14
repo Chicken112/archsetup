@@ -54,6 +54,7 @@ swapon "${DISK}1"
 mkfs.ext4 "${DISK}2"
 mount "${DISK}2" /mnt
 
+pacman -Sy
 pacstrap /mnt base linux linux-firmware
 
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -73,5 +74,11 @@ echo -e "arch\narch" | passwd $USERNAME
 usermod -aG wheel,audio,video $USERNAME
 echo "Done setting up users"
 
-pacman -Sy
-pacman -S --noconfirm sudo nano
+
+pacman -S --noconfirm sudo
+echo "%wheel ALL=(ALL:ALL) ALL" | sudo EDITOR="tee -a" visudo
+
+
+pacman -S --noconfirm grub
+grub-install --target=i386-pc $DISK
+grub-mkconfig -o /boot/grub/grub.cfg
