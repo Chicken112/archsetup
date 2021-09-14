@@ -82,3 +82,6 @@ echo "%wheel ALL=(ALL:ALL) ALL" | sudo EDITOR="tee -a" visudo
 pacman -S --noconfirm grub
 grub-install --target=i386-pc $DISK
 grub-mkconfig -o /boot/grub/grub.cfg
+
+pacman -S --noconfirm networkmanager
+systemctl enable NetworkManager
