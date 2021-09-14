@@ -28,10 +28,15 @@ fi
 
 #localization, change for your language
 loadkeys $KEYMAP
+ln -sf /usr/share/zoneinfo/Europe/Budapest /etc/localtime
+
 echo LANG=en_US.UTF-8 | sudo tee /etc/locale.conf
 echo KEYMAP=$KEYMAP | sudo tee /etc/vconsole.conf
+echo "en_US.UTF-8 UTF-8" | sudo tee -a /etc/locale.gen
 
 timedatectl set-ntp true
+hwclock --systohc   # sync software time to hardware clock
+locale-gen
 echo "Done setting up locals"
 
 # partitioning
@@ -54,6 +59,19 @@ pacstrap /mnt base linux linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 echo "Done setting up disk"
 
-arch-chroot /mnt << "EOT"
 
-EOT
+
+echo $USERNAME | sudo tee /etc/hostname
+echo "127.0.0.1      localhost
+::1      localhost
+127.0.1.1      $USERNAME.localdomain      $USERNAME"
+
+
+echo -e "arch\narch" | passwd
+useradd -m $USERNAME
+echo -e "arch\narch" | passwd $USERNAME
+usermod -aG wheel,audio,video $USERNAME
+echo "Done setting up users"
+
+pacman -Sy
+pacman -S --noconfirm sudo nano
