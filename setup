@@ -52,7 +52,7 @@ mkfs.ext4 "${DISK}2"
 mount "${DISK}2" /mnt
 
 pacman -Sy
-pacstrap --noconfirm /mnt base linux linux-firmware
+pacstrap /mnt base linux linux-firmware
 
 genfstab -U /mnt >> /mnt/etc/fstab
 echo "Done setting up disk"
