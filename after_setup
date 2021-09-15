@@ -27,6 +27,15 @@ pacman -S --noconfirm ttf-roboto
 #plasma
 pacman -S --noconfirm plasma-meta
 
+#firefox - web browser
+pacman -S --noconfirm firefox
+
+#alacritty - terminal emulator
+pacman -S --noconfirm alacritty
+
+#dolphin - file manager
+pacman -S --noconfirm dolphin
+
 clear
 echo "----------------------------------------------------------------------------------------------------"
 echo " Done installation script"
