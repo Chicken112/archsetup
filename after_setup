@@ -1,7 +1,21 @@
 #!/bin/bash
+set -e
 
 clear
-set -e
+echo "----------------------------------------------------------------------------------------------------"
+echo " [2/2] Arch linux setup script"
+echo " Only run this script if you have done step 1"
+echo "----------------------------------------------------------------------------------------------------"
+
+#localization, change for your language
+loadkeys hu
+ln -sf /usr/share/zoneinfo/Europe/Budapest /etc/localtime
+echo LANG=en_US.UTF-8 | sudo tee /etc/locale.conf
+echo KEYMAP=hu | sudo tee /etc/vconsole.conf
+echo "en_US.UTF-8 UTF-8" | sudo tee -a /etc/locale.gen
+timedatectl set-ntp true
+hwclock --systohc   # sync software time to hardware clock
+locale-gen
 
 #Display manager
 pacman -S --noconfirm sddm

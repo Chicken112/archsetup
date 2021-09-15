@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 #**********************************************************************************
 # User configurable part
@@ -10,11 +11,8 @@ USERNAME="arch"     # the password is "arch"
 #**********************************************************************************
 
 clear
-set -e
-
-#//TODO Echo after steps
 echo "----------------------------------------------------------------------------------------------------"
-echo " Arch linux setup script"
+echo " [1/2] Arch linux setup script"
 echo "----------------------------------------------------------------------------------------------------"
 CHOISE="no"
 read -n1 -r -p "continue? [y/n]" CHOISE
@@ -25,16 +23,6 @@ then
 fi
 echo ""
 
-#localization, change for your language
-loadkeys $KEYMAP
-ln -sf /usr/share/zoneinfo/Europe/Budapest /etc/localtime
-echo LANG=en_US.UTF-8 | sudo tee /etc/locale.conf
-echo KEYMAP=$KEYMAP | sudo tee /etc/vconsole.conf
-echo "en_US.UTF-8 UTF-8" | sudo tee -a /etc/locale.gen
-timedatectl set-ntp true
-hwclock --systohc   # sync software time to hardware clock
-locale-gen
-echo "Done setting up locals"
 
 # partitioning
 (
@@ -55,7 +43,6 @@ pacman -Sy
 pacstrap /mnt base linux linux-firmware
 
 genfstab -U /mnt >> /mnt/etc/fstab
-echo "Done setting up disk"
 
 
 cat << EOF | arch-chroot /mnt
@@ -86,18 +73,9 @@ EOF
 
 umount -R /mnt
 
-#Display manager
-pacman -S --noconfirm sddm
-systemctl enable sddm -f
-
-#Font
-pacman -S --noconfirm ttf-roboto
-
-#plasma
-pacman -S --noconfirm plasma-meta
-
 clear
 echo "----------------------------------------------------------------------------------------------------"
 echo " Done installation script"
 echo " Remove the installation medium and reboot"
+echo " After reboot, run the after_setup script"
 echo "----------------------------------------------------------------------------------------------------"
