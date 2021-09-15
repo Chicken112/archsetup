@@ -26,3 +26,11 @@ pacman -S --noconfirm ttf-roboto
 
 #plasma
 pacman -S --noconfirm plasma-meta
+
+clear
+echo "----------------------------------------------------------------------------------------------------"
+echo " Done installation script"
+echo " Restart for changes to take effects"
+echo " "
+echo " [ Encountered any errors? report them to the github page ]"
+echo "----------------------------------------------------------------------------------------------------"
