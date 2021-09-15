@@ -23,7 +23,7 @@ if [ $CHOISE != "y" ] && [ $CHOISE != "yes" ] && [ $CHOISE != "" ];
 then
     exit 1
 fi
-echo "\n"
+echo ""
 
 #localization, change for your language
 loadkeys $KEYMAP
