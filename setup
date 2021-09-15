@@ -83,15 +83,6 @@ grub-install --target=i386-pc $DISK
 grub-mkconfig -o /boot/grub/grub.cfg
 EOF
 
-#Display manager
-pacman -S --noconfirm sddm
-systemctl enable sddm -f
-
-#Font
-pacman -S --noconfirm ttf-roboto
-
-#plasma
-pacman -S --noconfirm plasma-meta
 
 umount -R /mnt
 

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+clear
+set -e
+
+#Display manager
+pacman -S --noconfirm sddm
+systemctl enable sddm -f
+
+#Font
+pacman -S --noconfirm ttf-roboto
+
+#plasma
+pacman -S --noconfirm plasma-meta
