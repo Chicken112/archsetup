@@ -86,8 +86,18 @@ EOF
 
 umount -R /mnt
 
+#Display manager
+pacman -S --noconfirm sddm
+systemctl enable sddm -f
+
+#Font
+pacman -S --noconfirm ttf-roboto
+
+#plasma
+pacman -S --noconfirm plasma-meta
+
 clear
 echo "----------------------------------------------------------------------------------------------------"
 echo " Done installation script"
-echo " reboot and do after_installation in the wiki"
+echo " Remove the installation medium and reboot"
 echo "----------------------------------------------------------------------------------------------------"
