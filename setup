@@ -51,8 +51,8 @@ swapon "${DISK}1"
 mkfs.ext4 "${DISK}2"
 mount "${DISK}2" /mnt
 
-pacman -Syu
-pacstrap /mnt base linux linux-firmware
+pacman -Sy
+pacstrap --noconfirm /mnt base linux linux-firmware
 
 genfstab -U /mnt >> /mnt/etc/fstab
 echo "Done setting up disk"
@@ -94,3 +94,9 @@ pacman -S --noconfirm ttf-roboto
 pacman -S --noconfirm plasma-meta
 
 umount -R /mnt
+
+clear
+echo "----------------------------------------------------------------------------------------------------"
+echo " Done installation script"
+echo " reboot and do after_installation in the wiki"
+echo "----------------------------------------------------------------------------------------------------"
