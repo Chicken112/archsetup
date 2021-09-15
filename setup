@@ -51,7 +51,7 @@ swapon "${DISK}1"
 mkfs.ext4 "${DISK}2"
 mount "${DISK}2" /mnt
 
-pacman -Sy
+pacman -Syu
 pacstrap /mnt base linux linux-firmware
 
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -83,8 +83,14 @@ grub-install --target=i386-pc $DISK
 grub-mkconfig -o /boot/grub/grub.cfg
 EOF
 
+#Display manager
+pacman -S --noconfirm sddm
+systemctl enable sddm -f
 
+#Font
+pacman -S --noconfirm ttf-roboto
 
-
+#plasma
+pacman -S --noconfirm plasma-meta
 
 umount -R /mnt
