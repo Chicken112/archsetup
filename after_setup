@@ -18,7 +18,7 @@ hwclock --systohc   # sync software time to hardware clock
 locale-gen
 
 #Display manager
-pacman -S --noconfirm lightdm
+pacman -S --noconfirm lightdm lightdm-gtk-greeter
 systemctl enable lightdm -f
 
 #Font
