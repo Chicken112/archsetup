@@ -25,7 +25,7 @@ systemctl enable lightdm -f
 pacman -S --noconfirm ttf-roboto
 
 #qtile
-pacman -S --noconfirm qtile python pango nitrogen
+pacman -S --noconfirm qtile python python-setuptools pango nitrogen
 
 #firefox - web browser
 #pacman -S --noconfirm firefox

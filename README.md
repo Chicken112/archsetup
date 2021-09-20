@@ -13,6 +13,6 @@ Reboot
     | or choose boot to existing os
 
 ```
-curl -L bit.ly/arch-after -o after_setup
-bash after_setup
+curl -L bit.ly/arch-after -o after
+bash after
 ```
