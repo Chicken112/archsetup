@@ -18,14 +18,14 @@ hwclock --systohc   # sync software time to hardware clock
 locale-gen
 
 #Display manager
-pacman -S --noconfirm sddm
-systemctl enable sddm -f
+pacman -S --noconfirm lightdm
+systemctl enable lightdm -f
 
 #Font
 pacman -S --noconfirm ttf-roboto
 
-#plasma
-pacman -S --noconfirm plasma-meta
+#qtile
+pacman -S --noconfirm qtile python pango nitrogen
 
 #firefox - web browser
 pacman -S --noconfirm firefox
