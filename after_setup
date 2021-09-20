@@ -30,8 +30,8 @@ pacman -S --noconfirm plasma-meta
 #firefox - web browser
 pacman -S --noconfirm firefox
 
-#alacritty - terminal emulator
-pacman -S --noconfirm alacritty
+#xterm - terminal emulator
+pacman -S --noconfirm xterm
 
 #dolphin - file manager
 pacman -S --noconfirm dolphin
