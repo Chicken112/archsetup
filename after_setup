@@ -18,7 +18,7 @@ hwclock --systohc   # sync software time to hardware clock
 locale-gen
 
 #Display manager
-pacman -S --noconfirm lightdm lightdm-gtk-greeter
+pacman -Syy --noconfirm lightdm lightdm-gtk-greeter xorg
 systemctl enable lightdm -f
 
 #Font
@@ -28,13 +28,13 @@ pacman -S --noconfirm ttf-roboto
 pacman -S --noconfirm qtile python pango nitrogen
 
 #firefox - web browser
-pacman -S --noconfirm firefox
+#pacman -S --noconfirm firefox
 
 #xterm - terminal emulator
-pacman -S --noconfirm xterm
+#pacman -S --noconfirm xterm
 
 #dolphin - file manager
-pacman -S --noconfirm dolphin
+#pacman -S --noconfirm dolphin
 
 clear
 echo "----------------------------------------------------------------------------------------------------"
