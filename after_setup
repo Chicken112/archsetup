@@ -31,7 +31,8 @@ pacman -S --noconfirm qtile python python-setuptools pango nitrogen
 #pacman -S --noconfirm firefox
 
 #xterm - terminal emulator
-#pacman -S --noconfirm xterm
+pacman -S --noconfirm xterm
+setxkbmap hu ##not working
 
 #dolphin - file manager
 #pacman -S --noconfirm dolphin
