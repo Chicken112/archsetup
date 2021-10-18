@@ -18,14 +18,23 @@ hwclock --systohc   # sync software time to hardware clock
 locale-gen
 
 #Display manager
-pacman -Syy --noconfirm lightdm lightdm-gtk-greeter xorg
+pacman -Sy --noconfirm lightdm lightdm-gtk-greeter
 systemctl enable lightdm -f
 
 #Font
 pacman -S --noconfirm ttf-roboto
 
 #qtile
-pacman -S --noconfirm qtile python python-setuptools pango nitrogen
+#pacman -S --noconfirm qtile python python-setuptools pango nitrogen
+
+#org
+pacman -S --noconfirm xorg xorg-server
+
+#openBox - window manager
+pacman -S --noconfirm openbox obconf
+
+#nitrogen - wallpaper
+pacman -S --noconfirm nitrogen
 
 #firefox - web browser
 #pacman -S --noconfirm firefox
