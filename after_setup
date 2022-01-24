@@ -34,7 +34,7 @@ pacman -S --noconfirm xorg xorg-server
 pacman -S --noconfirm openbox obconf
 
 #nitrogen - wallpaper
-pacman -S --noconfirm nitrogen
+pacman -S --noconfirm nitrogen gnome-backgrounds
 
 #firefox - web browser
 #pacman -S --noconfirm firefox

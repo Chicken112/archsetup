@@ -29,7 +29,7 @@ echo ""
     echo n; echo p; echo 1; echo ""; echo +$SWAPSIZE; # creating swap
     echo n; echo p; echo 2; echo ""; echo "";  # creating main filesystem
 
-    echo t; echo 1; echo 19; # (TODO) this needs to be swap, may change
+    echo t; echo 1; echo 82; # (TODO) this needs to be swap, may change
     
     echo w
 ) | fdisk $DISK
